@@ -21,21 +21,21 @@ window.onload = function remplir() {
                         tab += "<img id=img-c" + j + "-l2 src='pic/usa.jpg'>";
                         break;
                     case 3:
-                        tab += "<img id=img-c" + j + "-l2 src='pic/usa.jpg'>";
+                        tab += "<img id=img-c" + j + "-l3 src='pic/usa.jpg'>";
                         break;
 
                     //WALTER WHITE
                     case 6:
-                        tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
+                        tab += "<img id=img-c" + j + "-l6 src='pic/urss.jpg'>";
                         break;
                     case 7:
-                        tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
+                        tab += "<img id=img-c" + j + "-l7 src='pic/urss.jpg'>";
                         break;
                     case 8:
-                        tab += "<img id=img-c" + j + "-l9 src='pic/urss.jpg'>";
+                        tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
                         break;
                     case 9:
-                        tab += "<img id=img-c" + j + "-l10 src='pic/urss.jpg'>";
+                        tab += "<img id=img-c" + j + "-l9 src='pic/urss.jpg'>";
                         break;
 
                 }
