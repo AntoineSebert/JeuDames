@@ -7,6 +7,7 @@ window.onload = function () {
 	});
 	var startTime = new Date();
 	setInterval(updateTime, 1000, startTime);
+	$("img").draggable({containment: "#grid > tbody",  grid:[75,75] });
 }
 
 function remplir() {
@@ -54,7 +55,6 @@ function remplir() {
 				tab += couleur + "'>";
 			}
 
-
             // document.getElementById("img-c;" + j + "-l"+i).addEventListener("mouseover", myScript);
         }
         tab += "</td>";
@@ -89,6 +89,8 @@ function updateTime(startTime) {
 	if (seconds < 10){
 		seconds = "0" + seconds;
 	}
+
+};
 
 	var t_str = hours + ":" + minutes + ":" + seconds;
 
