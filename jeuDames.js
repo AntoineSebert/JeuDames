@@ -90,7 +90,7 @@ function updateTime(startTime) {
 		seconds = "0" + seconds;
 	}
 
-};
+
 
 	var t_str = hours + ":" + minutes + ":" + seconds;
 
