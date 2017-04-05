@@ -1,48 +1,56 @@
-window.onload = function remplir() {
-    var tab = "";
-    var couleur;
-    for (var i = 0; i < 10; i++) {   //lignes
-        tab += "<tr>";
-        for (var j = 0; j < 10; j++) {   //colonnes
-            tab += "<td id=cell-c" + j + "-l" + i + " class='";
+window.onload = function () {
+	remplir();
+	resizeContent();
+	$(window).resize(function() {
+		resizeContent();
+	});
+}
 
-            if((i+j) % 2 ==1){
-                couleur = "noire";
-                tab += couleur + "'>";
-                switch (i) {
-                    //BLACK
-                    case 0:
-                        tab += "<img id=img-c" + j + "-l0 src='pic/usa.jpg'>";
-                        break;
-                    case 1:
-                        tab += "<img id=img-c" + j + "-l1 src='pic/usa.jpg'>";
-                        break;
-                    case 2:
-                        tab += "<img id=img-c" + j + "-l2 src='pic/usa.jpg'>";
-                        break;
-                    case 3:
-                        tab += "<img id=img-c" + j + "-l2 src='pic/usa.jpg'>";
-                        break;
+function remplir() {
+	var tab = "";
+	var couleur;
+	for (var i = 0; i < 10; i++) {   //lignes
+		tab += "<tr>";
+		for (var j = 0; j < 10; j++) {   //colonnes
+			tab += "<td id=cell-c" + j + "-l" + i + " class='";
+			if((i+j) % 2 ==1){
+				couleur = "noire";
+				tab += couleur + "'>";
+				switch (i) {
+					//BLACK
+					case 0:
+					 tab += "<img id=img-c" + j + "-l0 src='pic/usa.jpg'>";
+						break;
+					case 1:
+						tab += "<img id=img-c" + j + "-l1 src='pic/usa.jpg'>";
+						break;
+					case 2:
+						tab += "<img id=img-c" + j + "-l2 src='pic/usa.jpg'>";
+						break;
+					case 3:
+						tab += "<img id=img-c" + j + "-l2 src='pic/usa.jpg'>";
+						break;
 
-                    //WALTER WHITE
-                    case 6:
-                        tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
-                        break;
-                    case 7:
-                        tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
-                        break;
-                    case 8:
-                        tab += "<img id=img-c" + j + "-l9 src='pic/urss.jpg'>";
-                        break;
-                    case 9:
-                        tab += "<img id=img-c" + j + "-l10 src='pic/urss.jpg'>";
-                        break;
+					//WALTER WHITE
+					case 6:
+						tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
+						break;
+					case 7:
+						tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
+						break;
+					case 8:
+						tab += "<img id=img-c" + j + "-l9 src='pic/urss.jpg'>";
+						break;
+					case 9:
+						tab += "<img id=img-c" + j + "-l10 src='pic/urss.jpg'>";
+						break;
 
                 }
 
-            }else{
-                couleur = "blanche";
-                tab += couleur + "'>";
+            }
+            else{
+            	couleur = "blanche";
+            	tab += couleur + "'>";
             }
 
 
@@ -53,6 +61,20 @@ window.onload = function remplir() {
     tab += "</tr>";
     console.log(tab);
     document.getElementById("grid").innerHTML = tab;
+}
+
+function resizeContent() {
+	$('body').height($(window).height());
+	$('body').width($(window).width());
+
+	$('#header').height($(window).height() * 0.06);
+	$('#header').width($('body').width() / 2);
+	$('#header').css('padding', 1);
+	$('#header').append('<p>temps écoulé <time>0</time></p>');
+	$('#header p').css('margin', 0);
+	$('#header p').css("padding-top",($(this).parent().height() - $(this).height())/2 + 'px' );
+}
+
+jQuery.fn.verticalAlign = function () {
+	return this.css("margin-top",($(this).parent().height() - $(this).height())/2 + 'px' );
 };
-
-
