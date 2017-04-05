@@ -1,9 +1,12 @@
 window.onload = function () {
+	$('progress').css({"display": "none"});
 	remplir();
 	resizeContent();
 	$(window).resize(function() {
 		resizeContent();
 	});
+	var startTime = new Date();
+	setInterval(updateTime, 1000, startTime);
 }
 
 function remplir() {
@@ -44,14 +47,12 @@ function remplir() {
 					case 9:
 						tab += "<img id=img-c" + j + "-l10 src='pic/urss.jpg'>";
 						break;
-
-                }
-
-            }
-            else{
-            	couleur = "blanche";
-            	tab += couleur + "'>";
-            }
+				}
+			}
+			else{
+				couleur = "blanche";
+				tab += couleur + "'>";
+			}
 
 
             // document.getElementById("img-c;" + j + "-l"+i).addEventListener("mouseover", myScript);
@@ -64,17 +65,32 @@ function remplir() {
 }
 
 function resizeContent() {
+	// document size
 	$('body').height($(window).height());
 	$('body').width($(window).width());
 
-	$('#header').height($(window).height() * 0.06);
-	$('#header').width($('body').width() / 2);
-	$('#header').css('padding', 1);
-	$('#header').append('<p>temps écoulé <time>0</time></p>');
-	$('#header p').css('margin', 0);
-	$('#header p').css("padding-top",($(this).parent().height() - $(this).height())/2 + 'px' );
+	// cells size
+	$('#grid td').height(
+		$('#grid').height() / 10 +'px'
+	);
+	$('#grid td').width(
+		$('#grid').width() / 10 +'px'
+	);
 }
 
-jQuery.fn.verticalAlign = function () {
-	return this.css("margin-top",($(this).parent().height() - $(this).height())/2 + 'px' );
-};
+function updateTime(startTime) {
+ 	var hours = new Date().getHours() - startTime.getHours();
+	var minutes = new Date().getMinutes() - startTime.getMinutes();
+	var seconds = new Date().getSeconds() - startTime.getSeconds();
+
+	if (minutes < 10){
+		minutes = "0" + minutes;
+	}
+	if (seconds < 10){
+		seconds = "0" + seconds;
+	}
+
+	var t_str = hours + ":" + minutes + ":" + seconds;
+
+	$('#header time').html(t_str);
+}
