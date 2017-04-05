@@ -4,7 +4,7 @@
 @green: #1BFF17; 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+// GLOBAL /////////////////////////////////////////////////////////////////////////////////
 
 html, body {
 	height: 100%;
@@ -27,6 +27,8 @@ body {
 	width: 70%;
 }
 
+// CENTRAL /////////////////////////////////////////////////////////////////////////////////
+
 main {
 	margin-top: 1%;
 	margin-left: auto;
@@ -42,11 +44,6 @@ main {
 	width: 70%
 }
 
-#grid {
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .playerLabel {
 	height: 10%;
 	background-color:@lime;
@@ -56,22 +53,31 @@ main {
 	max-width: 70%
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
+// GRILLE /////////////////////////////////////////////////////////////////////////////////
 
-#grid img {
-	width: 99%;
-	height: 99%;
+#grid {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table {
+	border-collapse: collapse;
+	table-layout:fixed;
+}
+
+#grid td {
+	margin:0;
+	padding:0;
+}
+
+#grid td img {
+	width: 100%;
+	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 50%;
 	margin:0;
 	padding:0;
-}
-
-table {
-	border: solid black 5px;
-	border-collapse: collapse;
-	table-layout:fixed;
 }
 
 .blanche {

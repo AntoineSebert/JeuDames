@@ -7,7 +7,12 @@ window.onload = function () {
 	});
 	var startTime = new Date();
 	setInterval(updateTime, 1000, startTime);
-	$("img").draggable({containment: "#grid > tbody",  grid:[75,75] });
+	$("img").draggable({
+		containment: "#grid > tbody",  grid:[
+			($('#grid').width() / 10) + 5,
+			($('#grid').height() / 10) - 2
+		]
+	});
 }
 
 function remplir() {
@@ -79,7 +84,7 @@ function resizeContent() {
 }
 
 function updateTime(startTime) {
- 	var hours = new Date().getHours() - startTime.getHours();
+	var hours = new Date().getHours() - startTime.getHours();
 	var minutes = new Date().getMinutes() - startTime.getMinutes();
 	var seconds = new Date().getSeconds() - startTime.getSeconds();
 
@@ -90,9 +95,6 @@ function updateTime(startTime) {
 		seconds = "0" + seconds;
 	}
 
-};
-
 	var t_str = hours + ":" + minutes + ":" + seconds;
-
 	$('#header time').html(t_str);
 }
