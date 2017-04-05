@@ -53,6 +53,8 @@ window.onload = function remplir() {
     tab += "</tr>";
     console.log(tab);
     document.getElementById("grid").innerHTML = tab;
+
+    $("img").draggable({containment: "#grid > tbody",  grid:[75,75] });
 };
 
 
