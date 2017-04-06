@@ -8,9 +8,9 @@ window.onload = function () {
 	var startTime = new Date();
 	setInterval(updateTime, 1000, startTime);
 	$("img").draggable({
-		containment: "#grid > tbody",  grid:[
-			($('#grid').width() / 10) + 5,
-			($('#grid').height() / 10) - 2
+		containment: "#main",  grid:[
+			$('#grid td').width(),
+			$('#grid td').height()
 		]
 	});
 }
@@ -60,27 +60,53 @@ function remplir() {
 				tab += couleur + "'>";
 			}
 
-            // document.getElementById("img-c;" + j + "-l"+i).addEventListener("mouseover", myScript);
-        }
-        tab += "</td>";
-    }
-    tab += "</tr>";
-    console.log(tab);
-    document.getElementById("grid").innerHTML = tab;
+		// document.getElementById("img-c;" + j + "-l"+i).addEventListener("mouseover", myScript);
+		}
+		tab += "</td>";
+	}
+	tab += "</tr>";
+	console.log(tab);
+	$('#grid').html(tab);
 }
 
 function resizeContent() {
 	// document size
-	$('body').height($(window).height());
-	$('body').width($(window).width());
-
-	// cells size
-	$('#grid td').height(
-		$('#grid').height() / 10 +'px'
+	$('body').height(
+		Math.round($(window).height()) + 'px'
 	);
-	$('#grid td').width(
-		$('#grid').width() / 10 +'px'
+	$('body').width(
+		Math.round($(window).width()) + 'px'
 	);
+		// main
+		$('main').height(
+			Math.round($('body').height() * 0.98) + 'px'
+		);
+			// playerLabel
+			$('.playerLabel').height(
+				Math.round($('main').height() * 0.1) + 'px'
+			);
+			// plateau
+			$('plateau').height(
+				Math.round($('main').height() * 0.58) + 'px'
+			);
+			$('plateau').width(
+				Math.round($('plateau').height()) + 'px'
+			);
+			
+			//grille
+			$('#grid').height(
+				Math.round($('plateau').height()) + 'px'
+			);
+			$('#grid').width(
+				Math.round($('plateau').width()) + 'px'
+			);
+			// cells size
+			$('#grid td').height(
+				Math.round($('#grid').height() / 10) +'px'
+			);
+			$('#grid td').width(
+				Math.round($('#grid td').height() - 3) +'px'
+			);
 }
 
 function updateTime(startTime) {
@@ -96,5 +122,5 @@ function updateTime(startTime) {
 	}
 
 	var t_str = hours + ":" + minutes + ":" + seconds;
-	$('#header time').html(t_str);
+	$('.playerLabel time').html(t_str);
 }
