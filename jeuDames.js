@@ -13,52 +13,101 @@ window.onload = function () {
 			$('#grid td').height()
 		]
 	});
+	addHover();
+};
+
+function addHover() {
+    $("img").hover(function () {
+        var ide = $(this).attr('id');
+        var ideCol = parseInt(ide.charAt(5));
+        var ideRow = parseInt(ide.charAt(8));
+
+        var pays = $(this).attr('class').split(" ", 1);
+
+
+        if ($(this).attr('class').split(" ", 1) == "usa") {
+            if (ideCol != 0) {
+                var jouable1 = "cell-c";
+                jouable1 += ideCol - 1;
+                jouable1 += "-l";
+                jouable1 += ideRow + 1;
+            }
+
+            if (ideCol != 9) {
+                var jouable2 = "cell-c";
+                jouable2 += ideCol + 1;
+                jouable2 += "-l";
+                jouable2 += ideRow + 1;
+            }
+
+            console.log(jouable1 + " + " + jouable2)
+        } else if ($(this).attr('class').split(" ", 1) == "urss") {
+            if (ideCol != 0) {
+                var jouable1 = "cell-c";
+                jouable1 += ideCol - 1;
+                jouable1 += "-l";
+                jouable1 += ideRow - 1;
+            }
+            if (ideCol != 9) {
+
+                var jouable2 = "cell-c";
+                jouable2 += ideCol + 1;
+                jouable2 += "-l";
+                jouable2 += ideRow - 1;
+            }
+
+            console.log(jouable1 + " + " + jouable2)
+
+        }
+
+
+    });
 }
 
 function remplir() {
-	var tab = "";
-	var couleur;
-	for (var i = 0; i < 10; i++) {   //lignes
-		tab += "<tr>";
-		for (var j = 0; j < 10; j++) {   //colonnes
-			tab += "<td id=cell-c" + j + "-l" + i + " class='";
-			if((i+j) % 2 ==1){
-				couleur = "noire";
-				tab += couleur + "'>";
-				switch (i) {
-					//BLACK
-					case 0:
-					 tab += "<img id=img-c" + j + "-l0 src='pic/usa.jpg'>";
-						break;
-					case 1:
-						tab += "<img id=img-c" + j + "-l1 src='pic/usa.jpg'>";
-						break;
-					case 2:
-						tab += "<img id=img-c" + j + "-l2 src='pic/usa.jpg'>";
-						break;
-					case 3:
-						tab += "<img id=img-c" + j + "-l2 src='pic/usa.jpg'>";
-						break;
+    var tab = "";
+    var couleur;
+    for (var i = 0; i < 10; i++) {   //lignes
+        tab += "<tr>";
+        for (var j = 0; j < 10; j++) {   //colonnes
+            tab += "<td id=cell-c" + j + "-l" + i + " class='";
+            if ((i + j) % 2 == 1) {
+                couleur = "noire";
+                tab += couleur + "'>";
+                switch (i) {
+                    //BLACK
+                    case 0:
+                        tab += "<img class=usa id=img-c" + j + "-l0 src='pic/usa.jpg'>";
+                        break;
+                    case 1:
+                        tab += "<img class=usa id=img-c" + j + "-l1 src='pic/usa.jpg'>";
+                        break;
+                    case 2:
+                        tab += "<img class=usa id=img-c" + j + "-l2 src='pic/usa.jpg'>";
+                        break;
+                    case 3:
+                        tab += "<img class=usa id=img-c" + j + "-l3 src='pic/usa.jpg'>";
+                        break;
 
-					//WALTER WHITE
-					case 6:
-						tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
-						break;
-					case 7:
-						tab += "<img id=img-c" + j + "-l8 src='pic/urss.jpg'>";
-						break;
-					case 8:
-						tab += "<img id=img-c" + j + "-l9 src='pic/urss.jpg'>";
-						break;
-					case 9:
-						tab += "<img id=img-c" + j + "-l10 src='pic/urss.jpg'>";
-						break;
-				}
-			}
-			else{
-				couleur = "blanche";
-				tab += couleur + "'>";
-			}
+                    //WALTER WHITE
+                    case 6:
+                        tab += "<img class=urss id=img-c" + j + "-l6 src='pic/urss.jpg'>";
+                        break;
+                    case 7:
+                        tab += "<img class=urss id=img-c" + j + "-l7 src='pic/urss.jpg'>";
+                        break;
+                    case 8:
+                        tab += "<img class=urss id=img-c" + j + "-l8 src='pic/urss.jpg'>";
+                        break;
+                    case 9:
+                        tab += "<img class=urss id=img-c" + j + "-l9 src='pic/urss.jpg'>";
+                        break;
+                }
+            }
+            else {
+                couleur = "blanche";
+                tab += couleur + "'>";
+            }
 
 		// document.getElementById("img-c;" + j + "-l"+i).addEventListener("mouseover", myScript);
 		}
