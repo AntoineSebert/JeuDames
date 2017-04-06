@@ -1,15 +1,24 @@
-@blue: #17B6FF; 
-@magenta: #FF17B6; 
-@lime: #B6FF17; 
-@green: #1BFF17; 
+@blue: #17B6FF;
+@darkBlue: #22313F;
+@lime: #B6FF17;
+@grey: #636f61;
 
+.horizontallyCentered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.removeMargins {
+	margin:0;
+	padding:0;
+}
 
 // GLOBAL /////////////////////////////////////////////////////////////////////////////////
 
 html, body {
 	height: 100%;
 	width: 100%;
-	margin: 0;
+	.removeMargins;
 }
 
 body {
@@ -21,22 +30,20 @@ body {
 
 main {
 	margin-top: 1%;
-	margin-left: auto;
-	margin-right: auto;
+	.horizontallyCentered;
 }
 
 #plateau {
-	background-color: #22313F;
-	margin-left: auto;
-	margin-right: auto;
+	background-color: @darkBlue;
 	border-radius: 10px;
 	margin-bottom: 1%;
 	margin-top: 1%;
-	max-width: 71%
+	max-width: 71%;
+	.horizontallyCentered;
 }
 
 .playerLabel {
-	background-color:@lime;
+	background-color: @lime;
 	margin: 0 auto;
 	padding: 5px;
 	border-radius: 10px;
@@ -46,8 +53,18 @@ main {
 // GRILLE /////////////////////////////////////////////////////////////////////////////////
 
 #grid {
-	margin-left: auto;
-	margin-right: auto;
+	.horizontallyCentered;
+
+	td {
+		.removeMargins;
+
+		img {
+			width: 100%;
+			height: 100%;
+			.horizontallyCentered;
+			border-radius: 50%;
+		}
+	}
 }
 
 table {
@@ -55,25 +72,10 @@ table {
 	table-layout:fixed;
 }
 
-#grid td {
-	margin:0;
-	padding:0;
-}
-
-#grid td img {
-	width: 100%;
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	border-radius: 50%;
-	margin:0;
-	padding:0;
-}
-
 .blanche {
 	background-color: white;
 }
 
 .noire {
-	background-color: #737f81;
+	background-color: @grey;
 }

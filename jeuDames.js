@@ -74,35 +74,7 @@ function remplir() {
             if ((i + j) % 2 == 1) {
                 couleur = "noire";
                 tab += couleur + "'>";
-                switch (i) {
-                    //BLACK
-                    case 0:
-                        tab += "<img class=usa id=img-c" + j + "-l0 src='pic/usa.jpg'>";
-                        break;
-                    case 1:
-                        tab += "<img class=usa id=img-c" + j + "-l1 src='pic/usa.jpg'>";
-                        break;
-                    case 2:
-                        tab += "<img class=usa id=img-c" + j + "-l2 src='pic/usa.jpg'>";
-                        break;
-                    case 3:
-                        tab += "<img class=usa id=img-c" + j + "-l3 src='pic/usa.jpg'>";
-                        break;
-
-                    //WALTER WHITE
-                    case 6:
-                        tab += "<img class=urss id=img-c" + j + "-l6 src='pic/urss.jpg'>";
-                        break;
-                    case 7:
-                        tab += "<img class=urss id=img-c" + j + "-l7 src='pic/urss.jpg'>";
-                        break;
-                    case 8:
-                        tab += "<img class=urss id=img-c" + j + "-l8 src='pic/urss.jpg'>";
-                        break;
-                    case 9:
-                        tab += "<img class=urss id=img-c" + j + "-l9 src='pic/urss.jpg'>";
-                        break;
-                }
+                tab += createCase(i, j);
             }
             else {
                 couleur = "blanche";
@@ -116,6 +88,15 @@ function remplir() {
 	tab += "</tr>";
 	console.log(tab);
 	$('#grid').html(tab);
+}
+
+function createCase(i, j) {
+	if (i < 4)
+		return "<img class=usa id=img-c" + j + "-l" + i + " src='pic/usa.jpg'>";
+	else if (5 < i)
+		return "<img class=urss id=img-c" + j + "-l" + i + " src='pic/urss.jpg'>";
+	else
+		return "";
 }
 
 function resizeContent() {
